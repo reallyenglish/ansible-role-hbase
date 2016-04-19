@@ -1,0 +1,7 @@
+---
+
+- name: Install hbase
+  pkgng:
+    name: hbase
+    state: present
+  when: ansible_os_family == 'FreeBSD'

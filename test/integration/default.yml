@@ -1,0 +1,13 @@
+- hosts: all
+  roles:
+    - ansible-role-hbase
+  vars:
+    hbase_site_xml: |
+      <property>
+        <name>hbase.rootdir</name>
+        <value>file://{{ hbase_db_dir }}</value>
+      </property>
+      <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>/var/db/zookeeper</value>
+      </property>
