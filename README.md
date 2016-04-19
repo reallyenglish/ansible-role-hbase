@@ -23,6 +23,7 @@ Role Variables
 | hbase\_conf           | path to hbase\_site.xml | "{{ \_\_hbase\_conf }}" |
 | hbase\_flags          | not used yet | "" |
 | hbase\_site\_xml      | content of site.xml without header and <configuration> | "" |
+| hbase\_env\_sh        | content of hbase\_env.sh | ". {{ hbase\_conf\_dir }}/hbase-env-dist.sh" |
 
 Dependencies
 ------------

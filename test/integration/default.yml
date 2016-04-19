@@ -2,6 +2,12 @@
   roles:
     - ansible-role-hbase
   vars:
+    hbase_env_sh: |
+      . {{ hbase_conf_dir }}/hbase-env-dist.sh
+      export HBASE_OPTS="-XX:+UseConcMarkSweepGC"
+      export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
+      export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
+      export HBASE_MANAGES_ZK=false
     hbase_site_xml: |
       <property>
         <name>hbase.rootdir</name>

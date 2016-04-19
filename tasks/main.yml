@@ -6,9 +6,6 @@
 - include: install-FreeBSD.yml
   when: ansible_os_family == 'FreeBSD'
 
-- include: configure-FreeBSD.yml
-  when: ansible_os_family == 'FreeBSD'
-
 - name: Create log directory
   file:
     path: "{{ hbase_log_dir }}"
@@ -46,6 +43,12 @@
   template:
     src: hbase-site.xml.j2
     dest: "{{ hbase_conf }}"
+  notify: Restart hbase
+
+- name: Create hbase-env.sh
+  template:
+    src: hbase-env.sh.j2
+    dest: "{{ hbase_conf_dir }}/hbase-env.sh"
   notify: Restart hbase
 
 - name: Start hbase
