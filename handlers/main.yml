@@ -1,7 +1,5 @@
 ---
 
-# XXX this fails because ansible does not yet use service(8). thus, passing
-# polluted env LOGIN to the java command, miserably fails.
 - name: Restart hbase_config
   service:
     name: hbase_master
