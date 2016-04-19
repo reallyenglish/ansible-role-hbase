@@ -5,3 +5,8 @@
     name: hbase
     state: present
   when: ansible_os_family == 'FreeBSD'
+
+- name: Patch hbase_master rc.subr script
+  patch:
+    src: patch-hbase_master
+    dest: /usr/local/etc/rc.d/hbase_master

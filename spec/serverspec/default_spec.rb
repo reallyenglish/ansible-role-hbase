@@ -51,14 +51,7 @@ end
 #end
 
 describe service(service) do
-  # XXX due to serverspec bug, the test does not pass
-  #  1) Service "hbase_master" should be running
-  #     On host `127.0.0.1'
-  #     Failure/Error: it { should be_running }
-  #       expected Service "hbase_master" to be running
-  #       sudo -p 'Password: ' /bin/sh -c ps\ aux\ \|\ grep\ -w\ --\ hbase_master\ \|\ grep\ -qv\ grep
-
-  # it { should be_running }
+  it { should be_running }
   it { should be_enabled }
 end
 
