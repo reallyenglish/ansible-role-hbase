@@ -6,6 +6,11 @@
     state: present
   when: ansible_os_family == 'FreeBSD'
 
+- name: upload patch-hbase_master to remote XXX https://github.com/ansible/ansible-modules-extras/issues/338
+  copy:
+    src: patch-hbase_master
+    dest: /tmp/patch-hbase_master
+
 - name: Patch hbase_master rc.subr script
   patch:
     src: patch-hbase_master
