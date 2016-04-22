@@ -51,6 +51,12 @@
     dest: "{{ hbase_conf_dir }}/hbase-env.sh"
   notify: Restart hbase
 
+- name: Create regionservers
+  template:
+    src: regionservers.j2
+    dest: "{{ hbase_conf_dir }}/regionservers"
+  notify: Restart hbase
+
 - name: Start hbase
   service:
     name: "{{ hbase_service }}"

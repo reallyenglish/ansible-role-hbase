@@ -24,7 +24,7 @@ Role Variables
 | hbase\_flags          | not used yet | "" |
 | hbase\_site           | content of site.xml in a dict | "" |
 | hbase\_env\_sh        | content of hbase\_env.sh | ". {{ hbase\_conf\_dir }}/hbase-env-dist.sh" |
-
+| hbase\_regionservers  | a list of regionservers | [] |
 Dependencies
 ------------
 
@@ -43,6 +43,8 @@ Example Playbook
       export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
       export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
       export HBASE_MANAGES_ZK=false
+    hbase_regionservers:
+      - 127.0.0.1
     hbase_site:
       config:
         -

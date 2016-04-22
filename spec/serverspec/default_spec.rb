@@ -21,6 +21,8 @@ when 'freebsd'
   service = 'hbase_master'
 end
 
+regionservers_file = "#{config_dir}/regionservers"
+
 describe package(package) do
   it { should be_installed }
 end 
@@ -54,6 +56,11 @@ describe file(db_dir) do
   it { should be_mode 755 }
   it { should be_owned_by user }
   it { should be_grouped_into group }
+end
+
+describe file(regionservers_file) do
+  it { should be_file }
+  its(:content) { should match /127\.0\.0\.1/ }
 end
 
 #case os[:family]

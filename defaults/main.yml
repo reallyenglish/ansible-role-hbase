@@ -10,3 +10,4 @@ hbase_flags: ""
 
 hbase_site: {}
 hbase_env_sh: ". {{ hbase_conf_dir }}/hbase-env-dist.sh"
+hbase_regionservers: []
