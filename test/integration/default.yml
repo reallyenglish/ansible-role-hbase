@@ -8,12 +8,11 @@
       export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
       export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
       export HBASE_MANAGES_ZK=false
-    hbase_site_xml: |
-      <property>
-        <name>hbase.rootdir</name>
-        <value>file://{{ hbase_db_dir }}</value>
-      </property>
-      <property>
-        <name>hbase.zookeeper.property.dataDir</name>
-        <value>/var/db/zookeeper</value>
-      </property>
+    hbase_site:
+      config:
+        -
+          - name: hbase.rootdir
+          - value: "file://{{ hbase_db_dir }}"
+        -
+          - name: hbase.zookeeper.property.dataDir
+          - value: /var/db/zookeeper

@@ -8,5 +8,5 @@ hbase_service: "{{ __hbase_service }}"
 hbase_conf: "{{ __hbase_conf }}"
 hbase_flags: ""
 
-hbase_site_xml: ""
+hbase_site: {}
 hbase_env_sh: ". {{ hbase_conf_dir }}/hbase-env-dist.sh"

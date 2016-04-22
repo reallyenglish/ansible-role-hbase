@@ -11,6 +11,8 @@ provisioner:
   ansible_verbose: true
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
   http_proxy: <%= ENV['ANSIBLE_PROXY'] %>
+  additional_copy_path:
+    - filter_plugins
 
 platforms:
   - name: freebsd-10.3-amd64

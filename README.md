@@ -22,7 +22,7 @@ Role Variables
 | hbase\_service        | service name | "{{ \_\_hbase\_service }}" |
 | hbase\_conf           | path to hbase\_site.xml | "{{ \_\_hbase\_conf }}" |
 | hbase\_flags          | not used yet | "" |
-| hbase\_site\_xml      | content of site.xml without header and <configuration> | "" |
+| hbase\_site           | content of site.xml in a dict | "" |
 | hbase\_env\_sh        | content of hbase\_env.sh | ". {{ hbase\_conf\_dir }}/hbase-env-dist.sh" |
 
 Dependencies
@@ -33,19 +33,24 @@ None
 Example Playbook
 ----------------
 
-    - hosts: all
-      roles:
-        - ansible-role-hbase
-      vars:
-        hbase_site_xml: |
-          <property>
-            <name>hbase.rootdir</name>
-            <value>file://{{ hbase_db_dir }}</value>
-          </property>
-          <property>
-            <name>hbase.zookeeper.property.dataDir</name>
-            <value>/var/db/zookeeper</value>
-          </property>
+- hosts: all
+  roles:
+    - ansible-role-hbase
+  vars:
+    hbase_env_sh: |
+      . {{ hbase_conf_dir }}/hbase-env-dist.sh
+      export HBASE_OPTS="-XX:+UseConcMarkSweepGC"
+      export HBASE_MASTER_OPTS="$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
+      export HBASE_REGIONSERVER_OPTS="$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m"
+      export HBASE_MANAGES_ZK=false
+    hbase_site:
+      config:
+        -
+          - name: hbase.rootdir
+          - value: "file://{{ hbase_db_dir }}"
+        -
+          - name: hbase.zookeeper.property.dataDir
+          - value: /var/db/zookeeper
 
 License
 -------
