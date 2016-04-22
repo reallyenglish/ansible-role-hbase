@@ -4,4 +4,4 @@
   service:
     name: "{{ hbase_service }}"
     enabled: yes
-    status: restarted
+    state: restarted
