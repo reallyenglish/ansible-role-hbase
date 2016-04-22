@@ -1,6 +1,7 @@
 ---
 
-- name: Restart hbase_config
+- name: Restart hbase
   service:
-    name: hbase_master
+    name: "{{ hbase_service }}"
+    enabled: yes
     status: restarted
