@@ -1,15 +1,12 @@
-Role Name
-=========
+# Role Name
 
 Install hbase as a single node
 
-Requirements
-------------
+# Requirements
 
 None
 
-Role Variables
---------------
+# Role Variables
 
 | variable | description | default |
 |----------|-------------|---------|
@@ -25,14 +22,13 @@ Role Variables
 | hbase\_site           | content of site.xml in a dict | "" |
 | hbase\_env\_sh        | content of hbase\_env.sh | ". {{ hbase\_conf\_dir }}/hbase-env-dist.sh" |
 | hbase\_regionservers  | a list of regionservers | [] |
-Dependencies
-------------
+
+# Dependencies
 
 None
 
-Example Playbook
-----------------
-
+# Example Playbook
+```yaml
 - hosts: all
   roles:
     - ansible-role-hbase
@@ -53,13 +49,12 @@ Example Playbook
         -
           - name: hbase.zookeeper.property.dataDir
           - value: /var/db/zookeeper
+```
 
-License
--------
+# License
 
 BSD
 
-Author Information
-------------------
+# Author Information
 
 Tomoyuki Sakurai <tomoyukis@reallyenglish.com>
